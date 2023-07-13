@@ -1,0 +1,97 @@
+# DEPMEP
+# MassDEP Maximum Extent Practicable viewer
+# Before deploying on shinyapps.io, need to:
+#    library(remotes)
+#    install_github('bwcompton/readMVT')
+# B. Compton, 13 Jul 2023 (from app_test_further3.R)
+
+
+
+library(shiny)
+library(leaflet)
+library(readMVT)
+library(leaflet.lagniappe)
+library(leaflet.extras)        # this site is abandoned, so I'll need to find another full screen widget or fork this
+
+
+
+home <- c(-71.6995, 42.1349)  # center of Massachusetts
+zoom <- 8                     # starting zoom level (shows all of Massachusetts)
+
+data.zoom <- 14               # all MVT tiles are read at this zoom level to simplify caching
+trigger <- 14                 # show vector data when zoomed in this far or more
+zoom.levels = 14:22           # show vector data at these zoom levels
+
+help_text <- includeMarkdown('inst/MEPintro.md')        # markdown file with primary help text, including links to more help text
+
+
+xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilties of our GeoServer
+streamlines <- layer.info(xml, 'testbed:streamlines')       # get info for stream linework
+culverts <- layer.info(xml, 'testbed:CL_crossings7')        # get info for crossing points
+
+
+# User interface ---------------------
+ui <- fluidPage(
+   titlePanel('MassDEP culvert and bridge upgrade assessment tool'),
+   fluidRow(
+      column(2,
+             br(actionLink('help', label = 'How to use this tool')),
+             br(HTML('<a href="" target="_blank" rel="noopener noreferrer">About MEP guidance</a>')),
+             br(HTML('<a href="" target="_blank" rel="noopener noreferrer">MEP guidance document</a>')),
+             br(HTML('<a href="https://www.mass.gov/doc/massachusetts-river-and-stream-crossing-standards" target="_blank" rel="noopener noreferrer">Massachusetts River and Stream Crossing Standards</a>')),
+             br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations" target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
+             br(HTML('<a href="" target="_blank" rel="noopener noreferrer">Source data</a>')),
+             tags$img(height = 120, src = 'logos.png', style = 'position: absolute;top: 65vh;display: block;float: left;')
+      ),
+      column(10,
+             leafletOutput('map', height = '80vh')
+      ))
+)
+
+
+# Server -----------------------------
+server <- function(input, output, session) {
+
+   observeEvent(input$help, {
+      showModal(modalDialog(
+         help_text, title = 'Using the MassDEP culvert and bridge upgrade assessment tool',
+         easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
+      ))
+   })
+
+   output$map <- renderLeaflet({
+      leaflet() |>
+         addTiles(urlTemplate = '', attribution = '<a href="https://www.mass.gov/orgs/massachusetts-department-of-environmental-protection">Mass DEP | </a><a href="https://umassdsl.org">UMass DSL</a>') |>
+         addProviderTiles(providers$Esri.WorldStreetMap) |>
+         setView(lng = home[1], lat = home[2], zoom = zoom) |>
+         osmGeocoder(email = 'bcompton@umass.edu') |>
+         addFullscreenControl()
+   })
+
+   observe({
+
+      if(isTRUE(input$map_zoom >= trigger)) {
+         nw <- get.tile(data.zoom, input$map_bounds$north, input$map_bounds$west)   # corners of viewport
+         se <- get.tile(data.zoom, input$map_bounds$south, input$map_bounds$east)
+         m <- leafletProxy('map', session)
+
+         x <- read.viewport.tiles(streamlines, nw, se, data.zoom, session$userData[[streamlines$layer]])
+         session$userData[[streamlines$layer]] <- x$drawn
+         if(!is.null(x$tiles))
+            m <- addPolylines(m, data = x$tiles, group = 'vector', opacity = 0.4, color = 'cornflowerblue', weight = 3,
+                              popup = format(x$tiles$STREAMLINE))
+
+
+         x <- read.viewport.tiles(culverts, nw, se, data.zoom, session$userData[[culverts$layer]])
+         session$userData[[culverts$layer]] <- x$drawn
+         if(!is.null(x$tiles))
+            m <- addCircleMarkers(m, data = x$tiles, group = 'vector', opacity = 1, color = 'orange', radius = 4,
+                                  popup = format(x$tiles$rank))
+
+         return(groupOptions(m, 'vector', zoomLevels = zoom.levels))
+      }
+   })
+}
+
+
+shinyApp(ui, server)
