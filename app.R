@@ -3,7 +3,8 @@
 # Before deploying on shinyapps.io, need to:
 #    library(remotes)
 #    install_github('bwcompton/readMVT')
-# B. Compton, 13 Jul 2023 (from app_test_further3.R)
+#    install_github('bwcompton/leaflet.lagniappe')
+# B. Compton, 13-14 Jul 2023 (from app_test_further3.R)
 
 
 
@@ -22,8 +23,8 @@ data.zoom <- 14               # all MVT tiles are read at this zoom level to sim
 trigger <- 14                 # show vector data when zoomed in this far or more
 zoom.levels = 14:22           # show vector data at these zoom levels
 
-help_text <- includeMarkdown('inst/MEPintro.md')        # markdown file with primary help text, including links to more help text
-
+help_text <- includeMarkdown('inst/MEPintro.md')            # markdown file with primary help text, including links to more help text
+source_data <- includeMarkdown('inst/sourcedata.md')        # markdown file with links to source data
 
 xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilties of our GeoServer
 streamlines <- layer.info(xml, 'testbed:streamlines')       # get info for stream linework
@@ -36,11 +37,11 @@ ui <- fluidPage(
    fluidRow(
       column(2,
              br(actionLink('help', label = 'How to use this tool')),
-             br(HTML('<a href="" target="_blank" rel="noopener noreferrer">About MEP guidance</a>')),
-             br(HTML('<a href="" target="_blank" rel="noopener noreferrer">MEP guidance document</a>')),
+             br(HTML('<a href="https://umassdsl.org/404" target="_blank" rel="noopener noreferrer">About MEP guidance</a>')),
+             br(HTML('<a href="https://umassdsl.org/404" target="_blank" rel="noopener noreferrer">MEP guidance document</a>')),
              br(HTML('<a href="https://www.mass.gov/doc/massachusetts-river-and-stream-crossing-standards" target="_blank" rel="noopener noreferrer">Massachusetts River and Stream Crossing Standards</a>')),
              br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations" target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
-             br(HTML('<a href="" target="_blank" rel="noopener noreferrer">Source data</a>')),
+             br(actionLink('data', label = 'Source data')),
              tags$img(height = 120, src = 'logos.png', style = 'position: absolute;top: 65vh;display: block;float: left;')
       ),
       column(10,
@@ -59,9 +60,16 @@ server <- function(input, output, session) {
       ))
    })
 
+   observeEvent(input$data, {
+      showModal(modalDialog(
+         source_data, title = 'Data sources',
+         easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
+      ))
+   })
+
    output$map <- renderLeaflet({
       leaflet() |>
-         addTiles(urlTemplate = '', attribution = '<a href="https://www.mass.gov/orgs/massachusetts-department-of-environmental-protection">Mass DEP | </a><a href="https://umassdsl.org">UMass DSL</a>') |>
+         addTiles(urlTemplate = '', attribution = '<a href="https://www.mass.gov/orgs/massachusetts-department-of-environmental-protection" target="_blank" rel="noopener noreferrer">Mass DEP | </a><a href="https://umassdsl.org" target="_blank" rel="noopener noreferrer">UMass DSL</a>') |>
          addProviderTiles(providers$Esri.WorldStreetMap) |>
          setView(lng = home[1], lat = home[2], zoom = zoom) |>
          osmGeocoder(email = 'bcompton@umass.edu') |>

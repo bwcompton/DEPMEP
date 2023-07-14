@@ -1,0 +1,13 @@
+name: DEPMEP
+title: DEPMEP
+username:
+account: umassdsl
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9457326
+bundleId: 7457729
+url: https://umassdsl.shinyapps.io/DEPMEP/
+when: 1689355985.01216
+lastSyncTime: 1689355985.0122
+asMultiple: FALSE
+asStatic: FALSE
