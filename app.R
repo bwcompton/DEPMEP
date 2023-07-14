@@ -1,9 +1,7 @@
 # DEPMEP
 # MassDEP Maximum Extent Practicable viewer
 # Before deploying on shinyapps.io, need to:
-#    library(remotes)
-#    install_github('bwcompton/readMVT')
-#    install_github('bwcompton/leaflet.lagniappe')
+#    library(remotes); install_github('bwcompton/readMVT'); install_github('bwcompton/leaflet.lagniappe')
 # B. Compton, 13-14 Jul 2023 (from app_test_further3.R)
 
 
