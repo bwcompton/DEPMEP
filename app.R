@@ -1,8 +1,8 @@
 # DEPMEP
 # MassDEP Maximum Extent Practicable viewer
-# Before deploying on shinyapps.io, need to:
+# Before ititial deployment on shinyapps.io, need to:
 #    library(remotes); install_github('bwcompton/readMVT'); install_github('bwcompton/leaflet.lagniappe')
-# B. Compton, 13-14 Jul 2023 (from app_test_further3.R)
+# B. Compton, 13-17 Jul 2023 (from app_test_further3.R)
 
 
 
@@ -11,7 +11,6 @@ library(leaflet)
 library(readMVT)
 library(leaflet.lagniappe)
 library(leaflet.extras)        # this site is abandoned, so I'll need to find another full screen widget or fork this
-
 
 
 home <- c(-71.6995, 42.1349)  # center of Massachusetts
@@ -26,7 +25,8 @@ aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # markdown file: int
 source_data <- includeMarkdown('inst/sourcedata.md')        # markdown file: links to source data
 
 xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilties of our GeoServer
-streamlines <- layer.info(xml, 'testbed:streamlines')       # get info for stream linework
+#streamlines <- layer.info(xml, 'testbed:streamlines')       # get info for stream linework
+streamlines <- layer.info(xml, 'DEPMEP:streams')       # get info for stream linework
 culverts <- layer.info(xml, 'testbed:CL_crossings7')        # get info for crossing points
 
 
@@ -84,7 +84,6 @@ server <- function(input, output, session) {
    })
 
    observe({
-
       if(isTRUE(input$map_zoom >= trigger)) {
          nw <- get.tile(data.zoom, input$map_bounds$north, input$map_bounds$west)   # corners of viewport
          se <- get.tile(data.zoom, input$map_bounds$south, input$map_bounds$east)
@@ -92,10 +91,14 @@ server <- function(input, output, session) {
 
          x <- read.viewport.tiles(streamlines, nw, se, data.zoom, session$userData[[streamlines$layer]])
          session$userData[[streamlines$layer]] <- x$drawn
-         if(!is.null(x$tiles))
-            m <- addPolylines(m, data = x$tiles, group = 'vector', opacity = 0.4, color = 'cornflowerblue', weight = 3,
-                              popup = format(x$tiles$STREAMLINE))
+         if(!is.null(x$tiles)) {
+            f <- factor(x$tiles$hq, labels = c('General habitat quality', 'High habitat quality', 'Highest habitat quality'))
+            p <- paste0('<strong>Stream</strong><br/>', f) |>
+                        lapply(htmltools::HTML)
 
+            m <- addPolylines(m, data = x$tiles, group = 'vector', opacity = 0.4, color = 'cornflowerblue', weight = 3,
+                              popup = p)
+         }
 
          x <- read.viewport.tiles(culverts, nw, se, data.zoom, session$userData[[culverts$layer]])
          session$userData[[culverts$layer]] <- x$drawn
