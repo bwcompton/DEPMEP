@@ -5,9 +5,9 @@ account: umassdsl
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9457326
-bundleId: 7458570
+bundleId: 7466358
 url: https://umassdsl.shinyapps.io/DEPMEP/
-when: 1689373272.85223
-lastSyncTime: 1689373272.85227
+when: 1689608479.37254
+lastSyncTime: 1689608479.37255
 asMultiple: FALSE
 asStatic: FALSE

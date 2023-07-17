@@ -21,8 +21,9 @@ data.zoom <- 14               # all MVT tiles are read at this zoom level to sim
 trigger <- 14                 # show vector data when zoomed in this far or more
 zoom.levels = 14:22           # show vector data at these zoom levels
 
-help_text <- includeMarkdown('inst/MEPintro.md')            # markdown file with primary help text, including links to more help text
-source_data <- includeMarkdown('inst/sourcedata.md')        # markdown file with links to source data
+howto <- includeMarkdown('inst/howto.md')                   # markdown file: how to use this tool
+aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # markdown file: intro to MEP
+source_data <- includeMarkdown('inst/sourcedata.md')        # markdown file: links to source data
 
 xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilties of our GeoServer
 streamlines <- layer.info(xml, 'testbed:streamlines')       # get info for stream linework
@@ -34,12 +35,12 @@ ui <- fluidPage(
    titlePanel('MassDEP culvert and bridge upgrade assessment tool'),
    fluidRow(
       column(2,
-             br(actionLink('help', label = 'How to use this tool')),
-             br(HTML('<a href="https://umassdsl.org/404" target="_blank" rel="noopener noreferrer">About MEP guidance</a>')),
+             br(actionLink('howto', label = 'How to use this tool')),
+             br(actionLink('aboutMEP', label = 'About MEP guidance')),
              br(HTML('<a href="https://umassdsl.org/404" target="_blank" rel="noopener noreferrer">MEP guidance document</a>')),
              br(HTML('<a href="https://www.mass.gov/doc/massachusetts-river-and-stream-crossing-standards" target="_blank" rel="noopener noreferrer">Massachusetts River and Stream Crossing Standards</a>')),
              br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations" target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
-             br(actionLink('data', label = 'Source data')),
+             br(actionLink('sourcedata', label = 'Data sources')),
              tags$img(height = 120, src = 'logos.png', style = 'position: absolute;top: 65vh;display: block;float: left;')
       ),
       column(10,
@@ -51,14 +52,21 @@ ui <- fluidPage(
 # Server -----------------------------
 server <- function(input, output, session) {
 
-   observeEvent(input$help, {
+   observeEvent(input$howto, {
       showModal(modalDialog(
-         help_text, title = 'Using the MassDEP culvert and bridge upgrade assessment tool',
+         howto, title = 'How to use this tool',
          easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
       ))
    })
 
-   observeEvent(input$data, {
+   observeEvent(input$aboutMEP, {
+      showModal(modalDialog(
+         aboutMEP, title = 'About MEP guidance',
+         easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
+      ))
+   })
+
+   observeEvent(input$sourcedata, {
       showModal(modalDialog(
          source_data, title = 'Data sources',
          easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
