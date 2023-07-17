@@ -79,6 +79,7 @@ server <- function(input, output, session) {
          addProviderTiles(providers$Esri.WorldStreetMap) |>
          setView(lng = home[1], lat = home[2], zoom = zoom) |>
          osmGeocoder(email = 'bcompton@umass.edu') |>
+         addScaleBar(position = 'bottomright') |>
          addFullscreenControl()
    })
 

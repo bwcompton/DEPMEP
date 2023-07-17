@@ -1,7 +1,7 @@
 ### Find the culvert
 
 Start by locating the culvert (or bridge) you're interested in. You can 
-zoom into the map by clicking *+* (zoom out with *-*), with your mouse's 
+zoom into the map by clicking **+** (zoom out with **&#x2212;**), with your mouse's 
 scroll wheel, or by pinching if you're on a mobile device. Drag the map to pan.
 
 Alternatively, you can type an address or location. This can be a full street
@@ -15,7 +15,7 @@ see them, zoom in a little farther.
 
 Once you've located your culvert, click on it to get the score. A popup window
 will give you the MEP factor, the XYcode of the culvert, the latitude and 
-longitude, and the components of the score. See "About MEP guidance" for a 
+longitude, and the components of the score. See **About MEP guidance** for a 
 summary of how to interpret the score.
 
 ### If the culvert isn't displayed
@@ -23,7 +23,7 @@ summary of how to interpret the score.
 Some culverts aren't in the database. In general, the missing culverts are
 on very small streams, but this can also be due to missing roads or other 
 mapping errors. If the culvert is missing, you can click the stream where it
-should be to get the habitat quality score. See "About MEP guidance" for 
+should be to get the habitat quality score. See **About MEP guidance** for 
 how to work with just a habitat quality score.
 
 ### If the stream isn't displayed
