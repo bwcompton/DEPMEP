@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-## DEPMEP
+#### DEPMEP: MassDEP culvert and bridge upgrade assessment tool
 
 <!-- badges: start -->
 <!-- badges: end -->

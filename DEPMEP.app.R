@@ -28,7 +28,7 @@ zoom.levels = 14:22           # show vector data at these zoom levels
 howto <- includeMarkdown('inst/howto.md')                   # markdown file: how to use this tool
 aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # markdown file: intro to MEP
 source_data <- includeMarkdown('inst/sourcedata.md')        # markdown file: links to source data
-about <- includeMarkdown('readme.md')
+about <- includeMarkdown('README.md')
 
 xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilties of our GeoServer
 streamlines <- layer.info(xml, 'DEPMEP:streams')            # get info for stream linework
@@ -78,7 +78,7 @@ server <- function(input, output, session) {
 
    observeEvent(input$about, {
       showModal(modalDialog(
-         about, title = 'About', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
+         about, title = 'About this site', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
       ))
    })
 
