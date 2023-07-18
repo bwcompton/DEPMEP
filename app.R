@@ -11,6 +11,7 @@ library(leaflet)
 library(readMVT)
 library(leaflet.lagniappe)
 library(leaflet.extras)        # this site is abandoned, so I'll need to find another full screen widget or fork this
+source('fmt.hq.R')
 
 
 home <- c(-71.6995, 42.1349)  # center of Massachusetts
@@ -92,10 +93,7 @@ server <- function(input, output, session) {
          x <- read.viewport.tiles(streamlines, nw, se, data.zoom, session$userData[[streamlines$layer]])
          session$userData[[streamlines$layer]] <- x$drawn
          if(!is.null(x$tiles)) {
-            f <- factor(x$tiles$hq, labels = c('General habitat quality', 'High habitat quality', 'Highest habitat quality'))
-            p <- paste0('<strong>Stream</strong><br/>', f) |>
-                        lapply(htmltools::HTML)
-
+            p <- fmt.hq(x$tiles)
             m <- addPolylines(m, data = x$tiles, group = 'vector', opacity = 0.4, color = 'cornflowerblue', weight = 3,
                               popup = p)
          }
