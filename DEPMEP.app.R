@@ -11,6 +11,7 @@ library(shiny)
 library(leaflet)
 library(readMVT)
 library(htmltools)
+library(sf)
 library(leaflet.lagniappe)
 library(leaflet.extras)        # this site is abandoned, so I'll need to find another full screen widget or fork this
 source('format.culverts.R')
