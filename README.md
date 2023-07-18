@@ -12,7 +12,7 @@ planning culvert and bridge upgrades. It provides a web map of streams
 and road-stream crossings in Massachusetts, with scores for each stream
 segment and each crossing. The scores can be help determine whether the
 cost of a culvert or bridge upgrade fits within DEP’s “maximum extent
-practicable” regulations. For background and detail, see guideance
+practicable” regulations. For background and detail, see guidance
 document “Meeting the Massachusetts Stream Crossing Standards to the
 Maximum Extent Practicable” (currently in draft form, and not yet
 posted).

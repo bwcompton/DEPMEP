@@ -16,5 +16,6 @@
    h <- fmt.hq(x)
    z <- paste0('<h4>Stream</h4>', h) |>
       lapply(htmltools::HTML)
+
    return(z)
 }

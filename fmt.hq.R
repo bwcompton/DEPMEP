@@ -20,10 +20,8 @@
       ifelse(x$ws, 'Wild and Scenic river', '')
    )
 
-
    a <- c(as.list(as.data.frame(g)), list(sep = ','))
    h <- do.call(paste, args = a)
-
    h <- gsub(',+', ', ', h)
    h <- gsub('^, |, $', '', h)
    h <- ifelse(x$hq == 1, '', paste0('<br/><span style="color: gray">(', h, ')</span>'))

@@ -5,7 +5,7 @@
 
 
 
-source('g:/r/depmep/reproject_vectors.R')
+source('reproject_vectors.R')
 library(sf)
 
 reproject_vectors('d:/temp/streams_05_FAKE.shp', 'd:/temp/depmep_streams.shp', mvt = TRUE)

@@ -30,8 +30,7 @@ aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # markdown file: int
 source_data <- includeMarkdown('inst/sourcedata.md')        # markdown file: links to source data
 
 xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilties of our GeoServer
-#streamlines <- layer.info(xml, 'testbed:streamlines')       # get info for stream linework
-streamlines <- layer.info(xml, 'DEPMEP:streams')       # get info for stream linework
+streamlines <- layer.info(xml, 'DEPMEP:streams')            # get info for stream linework
 culverts <- layer.info(xml, 'testbed:CL_crossings7')        # get info for crossing points
 
 
@@ -59,22 +58,19 @@ server <- function(input, output, session) {
 
    observeEvent(input$howto, {
       showModal(modalDialog(
-         howto, title = 'How to use this tool',
-         easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
+         howto, title = 'How to use this tool', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
       ))
    })
 
    observeEvent(input$aboutMEP, {
       showModal(modalDialog(
-         aboutMEP, title = 'About MEP guidance',
-         easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
+         aboutMEP, title = 'About MEP guidance', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
       ))
    })
 
    observeEvent(input$sourcedata, {
       showModal(modalDialog(
-         source_data, title = 'Data sources',
-         easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
+         source_data, title = 'Data sources', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
       ))
    })
 
@@ -97,7 +93,7 @@ server <- function(input, output, session) {
          se <- get.tile(data.zoom, input$map_bounds$south, input$map_bounds$east)
          m <- leafletProxy('map', session)
 
-         x <- read.viewport.tiles(streamlines, nw, se, data.zoom, session$userData[[streamlines$layer]])
+         x <- read.viewport.tiles(streamlines, nw, se, data.zoom, session$userData[[streamlines$layer]])  # get streams
          session$userData[[streamlines$layer]] <- x$drawn
          if(!is.null(x$tiles)) {
             p <- format.streams(x$tiles)
@@ -105,10 +101,10 @@ server <- function(input, output, session) {
                               popup = p)
          }
 
-         x <- read.viewport.tiles(culverts, nw, se, data.zoom, session$userData[[culverts$layer]])
+         x <- read.viewport.tiles(culverts, nw, se, data.zoom, session$userData[[culverts$layer]])        # get culverts
          session$userData[[culverts$layer]] <- x$drawn
          if(!is.null(x$tiles)) {
-            p <- format.culverts(x$tiles)
+          p <- format.culverts(x$tiles)
             m <- addCircleMarkers(m, data = x$tiles, group = 'vector', opacity = 1, color = 'orange', radius = 4,
                                   popup = p)
          }
