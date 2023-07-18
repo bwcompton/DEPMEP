@@ -1,16 +1,20 @@
-# DEPMEP
-# MassDEP Maximum Extent Practicable viewer
-# Before ititial deployment on shinyapps.io, need to:
+# DEPMEP.app
+# MassDEP Maximum Extent Practicable viewer Shiny app
+# See https://github.com/bwcompton/DEPMEP
+# Before initial deployment on shinyapps.io, need to:
 #    library(remotes); install_github('bwcompton/readMVT'); install_github('bwcompton/leaflet.lagniappe')
-# B. Compton, 13-17 Jul 2023 (from app_test_further3.R)
+# B. Compton, 13-18 Jul 2023 (from app_test_further3.R)
 
 
 
 library(shiny)
 library(leaflet)
 library(readMVT)
+library(htmltools)
 library(leaflet.lagniappe)
 library(leaflet.extras)        # this site is abandoned, so I'll need to find another full screen widget or fork this
+source('format.culverts.R')
+source('format.streams.R')
 source('fmt.hq.R')
 
 
@@ -76,7 +80,10 @@ server <- function(input, output, session) {
 
    output$map <- renderLeaflet({
       leaflet() |>
-         addTiles(urlTemplate = '', attribution = '<a href="https://www.mass.gov/orgs/massachusetts-department-of-environmental-protection" target="_blank" rel="noopener noreferrer">Mass DEP | </a><a href="https://umassdsl.org" target="_blank" rel="noopener noreferrer">UMass DSL</a>') |>
+         addTiles(urlTemplate = '', attribution =
+                     '<a href="https://www.mass.gov/orgs/massachusetts-department-of-environmental-protection"
+                  target="_blank" rel="noopener noreferrer">Mass DEP | </a><a href="https://umassdsl.org"
+                  target="_blank" rel="noopener noreferrer">UMass DSL</a>') |>
          addProviderTiles(providers$Esri.WorldStreetMap) |>
          setView(lng = home[1], lat = home[2], zoom = zoom) |>
          osmGeocoder(email = 'bcompton@umass.edu') |>
@@ -93,16 +100,18 @@ server <- function(input, output, session) {
          x <- read.viewport.tiles(streamlines, nw, se, data.zoom, session$userData[[streamlines$layer]])
          session$userData[[streamlines$layer]] <- x$drawn
          if(!is.null(x$tiles)) {
-            p <- fmt.hq(x$tiles)
-            m <- addPolylines(m, data = x$tiles, group = 'vector', opacity = 0.4, color = 'cornflowerblue', weight = 3,
+            p <- format.streams(x$tiles)
+            m <- addPolylines(m, data = x$tiles, group = 'vector', opacity = 1, color = 'powderblue', weight = 3,
                               popup = p)
          }
 
          x <- read.viewport.tiles(culverts, nw, se, data.zoom, session$userData[[culverts$layer]])
          session$userData[[culverts$layer]] <- x$drawn
-         if(!is.null(x$tiles))
+         if(!is.null(x$tiles)) {
+            p <- format.culverts(x$tiles)
             m <- addCircleMarkers(m, data = x$tiles, group = 'vector', opacity = 1, color = 'orange', radius = 4,
-                                  popup = format(x$tiles$rank))
+                                  popup = p)
+         }
 
          return(groupOptions(m, 'vector', zoomLevels = zoom.levels))
       }

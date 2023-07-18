@@ -18,6 +18,10 @@ will give you the MEP factor, the XYcode of the culvert, the latitude and
 longitude, and the components of the score. See **About MEP guidance** for a 
 summary of how to interpret the score.
 
+Note that you can copy the text from the popup and paste it into a document or 
+email. You can also copy just the numerical part of lat-long and paste it into 
+the locate field in this tool or in Google maps to jump to the culvert.
+
 ### If the culvert isn't displayed
 
 Some culverts aren't in the database. In general, the missing culverts are
