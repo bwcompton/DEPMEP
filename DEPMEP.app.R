@@ -26,10 +26,10 @@ data.zoom <- 14               # all MVT tiles are read at this zoom level to sim
 trigger <- 14                 # show vector data when zoomed in this far or more
 zoom.levels = 14:22           # show vector data at these zoom levels
 
-howto <- includeMarkdown('inst/howto.md')                   # markdown file: how to use this tool
-aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # markdown file: intro to MEP
-source_data <- includeMarkdown('inst/sourcedata.md')        # markdown file: links to source data
-about <- includeMarkdown('README.md')
+howto <- includeMarkdown('inst/howto.md')                   # How to use this tool
+aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # Intro to MEP
+source_data <- includeMarkdown('inst/sourcedata.md')        # Links to source data
+beta <- includeMarkdown('inst/beta.md')                     # Beta test notice
 
 xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilties of our GeoServer
 streamlines <- layer.info(xml, 'DEPMEP:streams')            # get info for stream linework
@@ -47,7 +47,7 @@ ui <- fluidPage(
              br(HTML('<a href="https://www.mass.gov/doc/massachusetts-river-and-stream-crossing-standards" target="_blank" rel="noopener noreferrer">Massachusetts River and Stream Crossing Standards</a>')),
              br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations" target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
              br(actionLink('sourcedata', label = 'Data sources')),
-             br(actionLink('about', label = 'About this site')),
+             br(actionLink('beta', label = 'Beta test')),
              tags$img(height = 120, src = 'logos.png', style = 'position: absolute;top: 65vh;display: block;float: left;')
       ),
       column(10,
@@ -77,9 +77,9 @@ server <- function(input, output, session) {
       ))
    })
 
-   observeEvent(input$about, {
+   observeEvent(input$beta, {
       showModal(modalDialog(
-         about, title = 'About this site', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
+         beta, title = 'Beta test', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
       ))
    })
 

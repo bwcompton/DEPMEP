@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-#### DEPMEP: MassDEP culvert and bridge upgrade assessment tool
+# DEPMEP: MassDEP culvert and bridge upgrade assessment tool
 
 <!-- badges: start -->
 <!-- badges: end -->
