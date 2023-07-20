@@ -28,6 +28,7 @@ zoom.levels = 14:22           # show vector data at these zoom levels
 
 howto <- includeMarkdown('inst/howto.md')                   # How to use this tool
 aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # Intro to MEP
+crossings <- includeMarkdown('inst/crossings.md')           # Crossing standards
 source_data <- includeMarkdown('inst/sourcedata.md')        # Links to source data
 beta <- includeMarkdown('inst/beta.md')                     # Beta test notice
 
@@ -43,8 +44,9 @@ ui <- fluidPage(
       column(2,
              br(actionLink('howto', label = 'How to use this tool')),
              br(actionLink('aboutMEP', label = 'About MEP guidance')),
-             br(HTML('<a href="https://umassdsl.org/404" target="_blank" rel="noopener noreferrer">MEP guidance document</a>')),
-             br(HTML('<a href="https://www.mass.gov/doc/massachusetts-river-and-stream-crossing-standards" target="_blank" rel="noopener noreferrer">Massachusetts River and Stream Crossing Standards</a>')),
+             br(actionLink('crossings', label = 'Massachusetts River and Stream Crossing Standards')),
+            # br(HTML('<a href="https://umassdsl.org/404" target="_blank" rel="noopener noreferrer">MEP guidance document</a>')),
+            # br(HTML('<a href="https://www.mass.gov/doc/massachusetts-river-and-stream-crossing-standards" target="_blank" rel="noopener noreferrer">Massachusetts River and Stream Crossing Standards</a>')),
              br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations" target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
              br(actionLink('sourcedata', label = 'Data sources')),
              br(actionLink('beta', label = 'Beta test')),
@@ -70,6 +72,13 @@ server <- function(input, output, session) {
          aboutMEP, title = 'About MEP guidance', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
       ))
    })
+
+   observeEvent(input$crossings, {
+      showModal(modalDialog(
+         crossings, title = 'Massachusetts River and Stream Crossing Standards', easyClose = TRUE,
+         fade = TRUE, footer = modalButton('OK')
+         ))
+      })
 
    observeEvent(input$sourcedata, {
       showModal(modalDialog(
