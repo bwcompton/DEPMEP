@@ -3,7 +3,7 @@
 # See https://github.com/bwcompton/DEPMEP
 # Before initial deployment on shinyapps.io, need to:
 #    library(remotes); install_github('bwcompton/readMVT'); install_github('bwcompton/leaflet.lagniappe')
-# B. Compton, 13-18 Jul 2023 (from app_test_further3.R)
+# B. Compton, 13-21 Jul 2023 (from app_test_further3.R)
 
 
 
@@ -13,7 +13,6 @@ library(readMVT)
 library(htmltools)
 library(sf)
 library(leaflet.lagniappe)
-library(leaflet.extras)        # this site is abandoned, so I'll need to find another full screen widget or fork this
 
 source('modalHelp.R')
 source('format.culverts.R')
@@ -85,7 +84,7 @@ server <- function(input, output, session) {
          setView(lng = home[1], lat = home[2], zoom = zoom) |>
          osmGeocoder(email = 'bcompton@umass.edu') |>
          addScaleBar(position = 'bottomright') |>
-         addFullscreenControl()
+         addFullscreen()
    })
 
    observe({
