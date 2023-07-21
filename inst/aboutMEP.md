@@ -5,6 +5,7 @@ tr:nth-child(odd) {
 tr:nth-child(even) {
   background-color: #F8F8F8;
   }
+
   
 </style>
 
