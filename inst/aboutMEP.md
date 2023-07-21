@@ -37,8 +37,8 @@ of a crossing design that accommodates the MassDOT Hydraulic Design
 Flood for that road classification (Table 1)[^1].
 
 <br>
-*Table 1. MassDOT Design Floods for Various Road and Highway Functional
-Classifications.*
+**Table 1. MassDOT Design Floods for Various Road and Highway Functional
+Classifications.**
 
 ---
 | Road or Highway Functional Classification | Hydraulic Design Flood |
@@ -129,7 +129,7 @@ quality and connectivity restoration potential, are presented in
 Table 2.
 
 <br>
-*Table 2. Maximum Extent Practicable Cost Factors*
+**Table 2. Maximum Extent Practicable Cost Factors**
 
 ---
 | | Highest Quality | High Quality | General Quality |

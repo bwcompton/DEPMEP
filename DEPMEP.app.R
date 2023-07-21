@@ -14,6 +14,8 @@ library(htmltools)
 library(sf)
 library(leaflet.lagniappe)
 library(leaflet.extras)        # this site is abandoned, so I'll need to find another full screen widget or fork this
+
+source('modalHelp.R')
 source('format.culverts.R')
 source('format.streams.R')
 source('fmt.hq.R')
@@ -42,7 +44,7 @@ ui <- fluidPage(
    titlePanel('MassDEP culvert and bridge upgrade assessment tool'),
    fluidRow(
       column(2,
-             br(actionLink('howto', label = 'How to use this tool')),
+             br(actionLink('howto', label = 'About this site')),
              br(actionLink('aboutMEP', label = 'About MEP guidance')),
              br(actionLink('crossings', label = 'Massachusetts River and Stream Crossing Standards')),
             # br(HTML('<a href="https://umassdsl.org/404" target="_blank" rel="noopener noreferrer">MEP guidance document</a>')),
@@ -50,6 +52,7 @@ ui <- fluidPage(
              br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations" target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
              br(actionLink('sourcedata', label = 'Data sources')),
              br(actionLink('beta', label = 'Beta test')),
+             br(helpText(HTML('<p style="color: red">FAKE DATA FOR TESTING!</p>'))),
              tags$img(height = 120, src = 'logos.png', style = 'position: absolute;top: 65vh;display: block;float: left;')
       ),
       column(10,
@@ -62,36 +65,15 @@ ui <- fluidPage(
 server <- function(input, output, session) {
 
    observeEvent(input$howto, {
-      showModal(modalDialog(
-         howto, title = 'How to use this tool', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
-      ))
-   })
-
+      modalHelp(howto, 'About this site')})
    observeEvent(input$aboutMEP, {
-      showModal(modalDialog(
-         aboutMEP, title = 'About MEP guidance', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
-      ))
-   })
-
+      modalHelp(aboutMEP, title = 'About MEP guidance')})
    observeEvent(input$crossings, {
-      showModal(modalDialog(
-         crossings, title = 'Massachusetts River and Stream Crossing Standards', easyClose = TRUE,
-         fade = TRUE, footer = modalButton('OK')
-         ))
-      })
-
+      modalHelp(crossings, title = 'Massachusetts River and Stream Crossing Standards')})
    observeEvent(input$sourcedata, {
-      showModal(modalDialog(
-         source_data, title = 'Data sources', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
-      ))
-   })
-
+      modalHelp(source_data, title = 'Data sources')})
    observeEvent(input$beta, {
-      showModal(modalDialog(
-         beta, title = 'Beta test', easyClose = TRUE, fade = TRUE, footer = modalButton('OK')
-      ))
-   })
-
+      modalHelp(beta, title = 'Beta test')})
 
    output$map <- renderLeaflet({
       leaflet() |>
