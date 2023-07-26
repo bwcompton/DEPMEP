@@ -1,7 +1,7 @@
 # DEPMEP.app
 # MassDEP Maximum Extent Practicable viewer Shiny app
 # See https://github.com/bwcompton/DEPMEP
-# Before initial deployment on shinyapps.io, need to:
+# Before initial deployment on shinyapps.io, need to restart R and:
 #    library(remotes); install_github('bwcompton/readMVT'); install_github('bwcompton/leaflet.lagniappe')
 # B. Compton, 13-21 Jul 2023 (from app_test_further3.R)
 
@@ -41,6 +41,7 @@ culverts <- layer.info(xml, 'testbed:CL_crossings7')        # get info for cross
 # User interface ---------------------
 ui <- fluidPage(
    titlePanel('MassDEP culvert and bridge upgrade assessment tool'),
+   tags$head(includeScript('inst/matomo.js')),              # add Matomo tracking JS
    fluidRow(
       column(2,
              br(actionLink('howto', label = 'About this site')),
