@@ -1,4 +1,4 @@
-# DEPMEP.app
+# DEPMEP app
 # MassDEP Maximum Extent Practicable viewer Shiny app
 # See https://github.com/bwcompton/DEPMEP
 # Before initial deployment on shinyapps.io, need to restart R and:
@@ -79,7 +79,7 @@ server <- function(input, output, session) {
       leaflet() |>
          addTiles(urlTemplate = '', attribution =
                      '<a href="https://www.mass.gov/orgs/massachusetts-department-of-environmental-protection"
-                  target="_blank" rel="noopener noreferrer">Mass DEP | </a><a href="https://umassdsl.org"
+                  target="_blank" rel="noopener noreferrer">Mass DEP</a> | <a href="https://umassdsl.org"
                   target="_blank" rel="noopener noreferrer">UMass DSL</a>') |>
          addProviderTiles(providers$Esri.WorldStreetMap) |>
          setView(lng = home[1], lat = home[2], zoom = zoom) |>
