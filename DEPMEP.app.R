@@ -3,7 +3,7 @@
 # See https://github.com/bwcompton/DEPMEP
 # Before initial deployment on shinyapps.io, need to restart R and:
 #    library(remotes); install_github('bwcompton/readMVT'); install_github('bwcompton/leaflet.lagniappe')
-# B. Compton, 13-21 Jul 2023 (from app_test_further3.R)
+# B. Compton, 13 Jul-7 Aug 2023 (from app_test_further3.R)
 
 
 
@@ -27,13 +27,13 @@ data.zoom <- 14               # all MVT tiles are read at this zoom level to sim
 trigger <- 14                 # show vector data when zoomed in this far or more
 zoom.levels = 14:22           # show vector data at these zoom levels
 
-howto <- includeMarkdown('inst/howto.md')                   # How to use this tool
-aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # Intro to MEP
-crossings <- includeMarkdown('inst/crossings.md')           # Crossing standards
+howto <- includeMarkdown('inst/howto.md')                   # About this site
+aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # About MEP guidance
+crossing_standards <- includeMarkdown('inst/crossing_standards.md')           # Crossing standards
 source_data <- includeMarkdown('inst/sourcedata.md')        # Links to source data
 beta <- includeMarkdown('inst/beta.md')                     # Beta test notice
 
-xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilties of our GeoServer
+xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilities of our GeoServer
 streamlines <- layer.info(xml, 'DEPMEP:streams')            # get info for stream linework
 culverts <- layer.info(xml, 'testbed:CL_crossings7')        # get info for crossing points
 
@@ -41,14 +41,14 @@ culverts <- layer.info(xml, 'testbed:CL_crossings7')        # get info for cross
 # User interface ---------------------
 ui <- fluidPage(
    titlePanel('MassDEP culvert and bridge upgrade assessment tool'),
-   tags$head(includeScript('inst/matomo.js')),              # add Matomo tracking JS
+   tags$head(tags$script(src = 'matomo.js')),               # add Matomo tracking JS
+   tags$script(src = 'matomo_events.js'),                   # track popups and help text
+
    fluidRow(
       column(2,
              br(actionLink('howto', label = 'About this site')),
              br(actionLink('aboutMEP', label = 'About MEP guidance')),
-             br(actionLink('crossings', label = 'Massachusetts River and Stream Crossing Standards')),
-            # br(HTML('<a href="https://umassdsl.org/404" target="_blank" rel="noopener noreferrer">MEP guidance document</a>')),
-            # br(HTML('<a href="https://www.mass.gov/doc/massachusetts-river-and-stream-crossing-standards" target="_blank" rel="noopener noreferrer">Massachusetts River and Stream Crossing Standards</a>')),
+             br(actionLink('crossing_standards', label = 'Massachusetts River and Stream Crossing Standards')),
              br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations" target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
              br(actionLink('sourcedata', label = 'Data sources')),
              br(actionLink('beta', label = 'Beta test')),
@@ -68,8 +68,8 @@ server <- function(input, output, session) {
       modalHelp(howto, 'About this site')})
    observeEvent(input$aboutMEP, {
       modalHelp(aboutMEP, title = 'About MEP guidance')})
-   observeEvent(input$crossings, {
-      modalHelp(crossings, title = 'Massachusetts River and Stream Crossing Standards')})
+   observeEvent(input$crossing_standards, {
+      modalHelp(crossing_standards, title = 'Massachusetts River and Stream Crossing Standards')})
    observeEvent(input$sourcedata, {
       modalHelp(source_data, title = 'Data sources')})
    observeEvent(input$beta, {
@@ -105,7 +105,7 @@ server <- function(input, output, session) {
          x <- read.viewport.tiles(culverts, nw, se, data.zoom, session$userData[[culverts$layer]])        # get culverts
          session$userData[[culverts$layer]] <- x$drawn
          if(!is.null(x$tiles)) {
-          p <- format.culverts(x$tiles)
+            p <- format.culverts(x$tiles)
             m <- addCircleMarkers(m, data = x$tiles, group = 'vector', opacity = 1, color = 'orange', radius = 4,
                                   popup = p)
          }

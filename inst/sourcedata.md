@@ -15,7 +15,11 @@
 
 * Streams - <a href="https://www.mass.gov/info-details/massgis-data-networked-hydro-centerlines" target="_blank" rel="noopener noreferrer">MassGIS Networked Hydro Centerlines</a>
 * Road-stream crossings - <a href="https://streamcontinuity.org/" target="_blank" rel="noopener noreferrer">North Atlantic Aquatic Connectivity Collaborative</a>
-* Basemap - ESRI World Street Map, &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012
+* Basemap - ESRI World Street Map, &copy; Esri &ndash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012
+
+### Download GIS data
+
+* Road-stream crossings with MEP attributes - <a href="https://landeco.umass.edu/web/lcc/dsl/design/DSL_data_cl_crossings.zip" target="_blank" rel="noopener noreferrer">Shapefile</a>, <a href="https://umassdsl.org/DSLdocs/DSL_documentation_critical_linkages.pdf" target="_blank" rel="noopener noreferrer">metadata</a> <span style="color: red">(bogus links for testing)</span>
 
 ---
 
