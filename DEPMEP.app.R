@@ -42,6 +42,7 @@ culverts <- layer.info(xml, 'testbed:CL_crossings7')        # get info for cross
 ui <- fluidPage(
    titlePanel('MassDEP culvert and bridge upgrade assessment tool'),
    tags$head(tags$script(src = 'matomo.js')),               # add Matomo tracking JS
+   tags$head(tags$script(src = 'matomo_heartbeat.js')),     # turn on heartbeat timer
    tags$script(src = 'matomo_events.js'),                   # track popups and help text
 
    fluidRow(
