@@ -1,10 +1,11 @@
-reproject_vectors <- function(from, to = from, mvt = FALSE, add.latlong = FALSE) {
+reproject_vectors <- function(from, to = from, mvt = FALSE) {
 
 # Reproject vector data (with existing CRS) to Web Mercator
+# Works with point, line, poly, or whatever
 # Arguments:
 #    from   source data
 #    to     destination (default: replace source)
-#	  mvt	   if TRUE, use epsg:900913; FALSE, use epsg:3857
+#	  mvt	   if TRUE, use epsg:900913; if FALSE, use epsg:3857
 #			   they're actually the same projection
 # B. Compton, 1 and 8 Jun 2023
 # 17 Jul 2023: add mvt option

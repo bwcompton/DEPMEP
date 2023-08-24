@@ -4,7 +4,7 @@ This web tool was created to help implement MA Department of Environmental Prote
 
 Start by locating the culvert (or bridge) you are interested in. You can zoom into the map by clicking **+** (zoom out with **&#x2212;**), using your mouse’s scroll wheel, or by pinching if you are on a mobile device. Drag the map to pan.
 
-Alternatively, you can type an address or location. This can be a full street address or the name of a town, for example "otis mass."
+Alternatively, you can type an address or location. This can be a full street address, the name of a town (for example "otis mass"), or a latitude and longitude (for example, "42.3923, -72.3448").
 
 Streams and culverts will appear once you’ve zoomed in far enough. If you don’t see them, zoom in a little farther.
 

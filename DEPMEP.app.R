@@ -99,8 +99,8 @@ server <- function(input, output, session) {
          session$userData[[streamlines$layer]] <- x$drawn
          if(!is.null(x$tiles)) {
             p <- format.streams(x$tiles)
-            m <- addPolylines(m, data = x$tiles, group = 'vector', opacity = 1, color = 'cornflowerblue', weight = 3,
-                              popup = p)
+            m <- addPolylines(m, data = x$tiles, group = 'vector', opacity = 1, color = 'powderblue', weight = 3,
+                              popup = p)  # powderblue blends with water on basemap; cornflowerBlue pops out
          }
 
          x <- read.viewport.tiles(culverts, nw, se, data.zoom, session$userData[[culverts$layer]])        # get culverts
