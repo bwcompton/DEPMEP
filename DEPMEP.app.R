@@ -51,9 +51,9 @@ ui <- fluidPage(
              br(actionLink('aboutMEP', label = 'About MEP guidance')),
              br(actionLink('crossing_standards', label = 'Massachusetts River and Stream Crossing Standards')),
              br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations" target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
-             br(actionLink('sourcedata', label = 'Data sources')),
-             br(actionLink('beta', label = 'Beta test')),
-             br(helpText(HTML('<p style="color: red">FAKE DATA FOR TESTING!</p>'))),
+             br(actionLink('sourcedata', label = 'Data sources & contact')),
+            # br(actionLink('beta', label = 'Beta test')),
+            # br(helpText(HTML('<p style="color: red">FAKE DATA FOR TESTING!</p>'))),
              tags$img(height = 120, src = 'logos.png', style = 'position: absolute;top: 65vh;display: block;float: left;')
       ),
       column(10,
@@ -72,9 +72,9 @@ server <- function(input, output, session) {
    observeEvent(input$crossing_standards, {
       modalHelp(crossing_standards, title = 'Massachusetts River and Stream Crossing Standards')})
    observeEvent(input$sourcedata, {
-      modalHelp(source_data, title = 'Data sources')})
-   observeEvent(input$beta, {
-      modalHelp(beta, title = 'Beta test')})
+      modalHelp(source_data, title = 'Data sources & contact')})
+   # observeEvent(input$beta, {
+   #    modalHelp(beta, title = 'Beta test')})
 
    output$map <- renderLeaflet({
       leaflet() |>

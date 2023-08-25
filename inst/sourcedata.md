@@ -24,3 +24,6 @@
 ---
 
 Data integration and web mapping by <a href="https://umassdsl.org/" target="_blank" rel="noopener noreferrer">UMass Designing Sustainable Landscapes</a>
+
+Bugs, problems, suggestions? <a href="https://umassdsl.webgis1.com/hesk/index.php?a=add&category=2" target="_blank" rel="noopener noreferrer">Let us know</a>
+
