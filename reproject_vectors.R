@@ -25,5 +25,3 @@ reproject_vectors <- function(from, to = from, mvt = FALSE) {
 # reproject_vectors('d:/gis/massachusetts.shp', 'd:/gis/forLeaflet/massachusetts.shp')
 # reproject_vectors('d:/gis/ecoregions.shp', 'd:/gis/forLeaflet/ecoregions.shp')
 # reproject_vectors('d:/gis/watersheds.shp', 'd:/gis/forLeaflet/watersheds.shp')
-
-

@@ -31,11 +31,11 @@ howto <- includeMarkdown('inst/howto.md')                   # About this site
 aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # About MEP guidance
 crossing_standards <- includeMarkdown('inst/crossing_standards.md')           # Crossing standards
 source_data <- includeMarkdown('inst/sourcedata.md')        # Links to source data
-beta <- includeMarkdown('inst/beta.md')                     # Beta test notice
+beta <- includeMarkdown('inst/beta.md')                     # Beta test noticewq11
 
 xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilities of our GeoServer
 streamlines <- layer.info(xml, 'DEPMEP:streams')            # get info for stream linework
-culverts <- layer.info(xml, 'testbed:CL_crossings7')        # get info for crossing points
+culverts <- layer.info(xml, 'DEPMEP:crossings')             # get info for crossing points
 
 
 # User interface ---------------------
@@ -52,8 +52,6 @@ ui <- fluidPage(
              br(actionLink('crossing_standards', label = 'Massachusetts River and Stream Crossing Standards')),
              br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations" target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
              br(actionLink('sourcedata', label = 'Data sources & contact')),
-            # br(actionLink('beta', label = 'Beta test')),
-            # br(helpText(HTML('<p style="color: red">FAKE DATA FOR TESTING!</p>'))),
              tags$img(height = 120, src = 'logos.png', style = 'position: absolute;top: 65vh;display: block;float: left;')
       ),
       column(10,
@@ -73,8 +71,6 @@ server <- function(input, output, session) {
       modalHelp(crossing_standards, title = 'Massachusetts River and Stream Crossing Standards')})
    observeEvent(input$sourcedata, {
       modalHelp(source_data, title = 'Data sources & contact')})
-   # observeEvent(input$beta, {
-   #    modalHelp(beta, title = 'Beta test')})
 
    output$map <- renderLeaflet({
       leaflet() |>

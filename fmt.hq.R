@@ -14,8 +14,8 @@
    g <- cbind(
       ifelse(x$bm, 'BioMap aquatic core', ''),
       ifelse(x$cw, 'Coldwater fisheries resource', ''),
-      ifelse(x$df == 1, 'Accessible diadramous fish run', ''),
-      ifelse(x$df == 2, 'Inaccessible diadramous fish run', ''),
+      ifelse(x$df == 1, 'Inaccessible diadramous fish run', ''),
+      ifelse(x$df == 2, 'Accessible diadramous fish run', ''),
       ifelse(x$acec, 'ACEC', ''),
       ifelse(x$ws, 'Wild and Scenic river', '')
    )

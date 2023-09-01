@@ -19,7 +19,7 @@
 
 ### Download GIS data
 
-* Road-stream crossings with MEP attributes - <a href="https://landeco.umass.edu/web/lcc/dsl/design/DSL_data_cl_crossings.zip" target="_blank" rel="noopener noreferrer">Shapefile</a>, <a href="https://umassdsl.org/DSLdocs/DSL_documentation_critical_linkages.pdf" target="_blank" rel="noopener noreferrer">metadata</a> <span style="color: red">(bogus links for testing)</span>
+* Road-stream crossings with MEP attributes - <a href="https://landeco.umass.edu/web/masscaps/DEPMEP_crossings_v0.1.zip" target="_blank" rel="noopener noreferrer">Shapefile</a>, <a href="https://landeco.umass.edu/web/masscaps/DEPMEP_crossings.pdf" target="_blank" rel="noopener noreferrer">metadata</a> <span style="color: red">(not yet available)</span>
 
 ---
 
