@@ -24,7 +24,7 @@
    h <- do.call(paste, args = a)
    h <- gsub(',+', ', ', h)
    h <- gsub('^, |, $', '', h)
-   h <- ifelse(x$hq == 1, '', paste0('<br/><span style="color: gray">(', h, ')</span>'))
+   h <- ifelse(x$hq == 1, '', paste0('<br/><span style="color: gray">', h, '</span>'))
 
    return(paste0(f, h))
 }

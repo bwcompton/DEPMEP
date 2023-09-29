@@ -50,7 +50,8 @@ ui <- fluidPage(
              br(actionLink('howto', label = 'About this site')),
              br(actionLink('aboutMEP', label = 'About MEP guidance')),
              br(actionLink('crossing_standards', label = 'Massachusetts River and Stream Crossing Standards')),
-             br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations" target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
+             br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations"
+                     target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
              br(actionLink('sourcedata', label = 'Data sources & contact')),
              tags$img(height = 120, src = 'logos.png', style = 'position: absolute;top: 65vh;display: block;float: left;')
       ),
