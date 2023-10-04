@@ -48,7 +48,7 @@ ui <- fluidPage(
    fluidRow(
       column(2,
              br(actionLink('howto', label = 'About this site')),
-             br(actionLink('aboutMEP', label = 'About MEP guidance')),
+             br(actionLink('aboutMEP', label = 'About the MEP guidance')),
              br(actionLink('crossing_standards', label = 'Massachusetts River and Stream Crossing Standards')),
              br(HTML('<a href="https://www.mass.gov/regulations/310-CMR-1000-wetlands-protection-act-regulations"
                      target="_blank" rel="noopener noreferrer">Massachusetts Wetlands Protection Act</a>')),
