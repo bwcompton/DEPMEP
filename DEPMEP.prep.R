@@ -19,8 +19,10 @@
    # Note: *** before running this with fresh streams data from Ethan, load streams shapefile into ArcGIS Pro
    #           and dissolve on fields cw, df, ws, acec, and bm (both options turned off)
    #
-   # After running, use SFTP to copy shapefiles to the DEPMEP folder on our GeoServer. Then use Layers > crossings or streams >
-   # Reload feature type. Make sure Tile Caching > application/vnd.mapbox-vector-tile is checked.
+   # After running, use SFTP to delete the shapefiles in the DEPMEP folder on the GeoServer, then copy the shapefiles
+   # to the DEPMEP folder. Deleting the files first seems to force the GeoServer to push the changes. If you have to
+   # recreate the layers, make sure Layers > (crossings or steams) > Tile Caching > application/vnd.mapbox-vector-tile
+   # is checked.
    #
    # B. Compton, 24 and 30-31 Aug 2023
    # 3 Oct 2023: add streams and crossings options
