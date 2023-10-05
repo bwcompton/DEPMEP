@@ -37,9 +37,10 @@
       paste0('<span style="color: gray">Critical Linkages percentile: ', x$cl_pct,
              '<br/>Coldwater Critical Linkages percentile: ', x$cw_pct, '</span>') |>
       paste0('<br/><span style="color: gray">XYcode: ', x$xycode, '<br/>Lat-long: ', x$lat, ', ', x$long, '</span>') |>
-      paste0(ifelse(x$survey_id != 0, paste0('<br/><br/><a href="https://naacc.org/naacc_display_crossing.cfm?aqId=', x$survey_id, '"
+      paste0(ifelse(x$database != 0, paste0('<br/><br/><a href="https://naacc.org/naacc_display_crossing',
+                                            ifelse(x$database == 1, '_umass.cfm?umassCrossingId=', '.cfm?aqId='), x$survey_id, '"
              target="_blank" rel="noopener noreferrer">NAACC survey</a>'), '')) |>
-       lapply(htmltools::HTML)
+      lapply(htmltools::HTML)
 
    return(z)
 }
