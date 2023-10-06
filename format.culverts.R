@@ -19,6 +19,8 @@
       paste0(factor(x$mep, levels = 1:8,
                     labels = c('baseline', paste0(c(10, 15, 20, 25, 30, 40, 50), '% above baseline'))), '</b></h5></p>') |>
 
+      paste0('<p>', fmt.hq(x), '</p>') |>
+
       paste0('<p>',
              factor(x$rp, levels = 1:5,
                     labels = c('Restoration potential: other',
@@ -31,8 +33,6 @@
                                          factor(x$cw_rp, levels = 2:5,
                                                 labels = c('top 30-40%', 'top 20-30%', 'top 10-20%', 'top 10%'))), ''),
              '</span></p>') |>
-
-      paste0('<p>', fmt.hq(x), '</p>') |>
 
       paste0('<span style="color: gray">Critical Linkages percentile: ', x$cl_pct,
              '<br/>Coldwater Critical Linkages percentile: ', x$cw_pct, '</span>') |>
