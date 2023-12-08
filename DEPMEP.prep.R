@@ -1,4 +1,4 @@
-'DEPMEP.prep' <- function(streamsfile = 'streams_5a.shp', crossingsfile = 'depmep_points_preliminary.shp',
+'DEPMEP.prep' <- function(streamsfile = 'streams_5a.shp', crossingsfile = 'depmep_points.shp',
                           streams = TRUE, crossings = TRUE) {
 
    # DEPMEP.prep: Prepare streams data for DEPMEP
@@ -21,8 +21,9 @@
    #
    # After running, use SFTP to delete the shapefiles in the DEPMEP folder on the GeoServer, then copy the shapefiles
    # to the DEPMEP folder. Deleting the files first seems to force the GeoServer to push the changes. You may need to
-   # do Layers > (crossings or streams) > Reload feature type ... it's inconsistent. If you have to recreate the
-   # layers, make sure Layers > (crossings or steams) > Tile Caching > application/vnd.mapbox-vector-tile is checked.
+   # do Layers > (crossings or streams) > Reload feature type ... it's inconsistent. You may also need to restart the
+   # Shiny app. If you have to recreate the layers, make sure Layers > (crossings or steams) > Tile Caching >
+   # application/vnd.mapbox-vector-tile is checked.
    #
    # B. Compton, 24 and 30-31 Aug 2023
    # 3 Oct 2023: add streams and crossings options

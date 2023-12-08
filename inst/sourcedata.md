@@ -26,7 +26,7 @@
 
 Data integration and web mapping by <a href="https://umassdsl.org/" target="_blank" rel="noopener noreferrer">UMass Designing Sustainable Landscapes</a>. 
 
-Crossings used for Critical Linkages and for this site were downloaded 26 Jun 2020; other data are current as of 29 Aug 2023.
+Crossings used for Critical Linkages and for this site were downloaded October 19, 2023; other data are current as of 8 Dec 2023.
 
 Bugs, problems, suggestions? <a href="https://umassdsl.webgis1.com/hesk/index.php?a=add&category=2" target="_blank" rel="noopener noreferrer">Let us know</a>
 
