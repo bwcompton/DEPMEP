@@ -11,6 +11,7 @@ library(shiny)
 library(leaflet)
 library(readMVT)
 library(htmltools)
+library(markdown)
 library(sf)
 library(leaflet.lagniappe)
 
