@@ -32,7 +32,10 @@ howto <- includeMarkdown('inst/howto.md')                   # About this site
 aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # About MEP guidance
 crossing_standards <- includeMarkdown('inst/crossing_standards.md')           # Crossing standards
 source_data <- includeMarkdown('inst/sourcedata.md')        # Links to source data
-beta <- includeMarkdown('inst/beta.md')                     # Beta test noticewq11
+beta <- includeMarkdown('inst/beta.md')                     # Beta test notice
+
+osm_email <- readChar(f <- 'www/osm_email.txt', file.info(f)$size)
+
 
 xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilities of our GeoServer
 streamlines <- layer.info(xml, 'DEPMEP:streams')            # get info for stream linework
@@ -82,7 +85,7 @@ server <- function(input, output, session) {
                   target="_blank" rel="noopener noreferrer">UMass DSL</a>') |>
          addProviderTiles(providers$Esri.WorldStreetMap) |>
          setView(lng = home[1], lat = home[2], zoom = zoom) |>
-         osmGeocoder(email = 'bcompton@umass.edu') |>
+         osmGeocoder(email = email = osm_email) |>
          addScaleBar(position = 'bottomright') |>
          addFullscreen()
    })
