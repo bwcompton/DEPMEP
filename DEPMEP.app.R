@@ -85,7 +85,7 @@ server <- function(input, output, session) {
                   target="_blank" rel="noopener noreferrer">UMass DSL</a>') |>
          addProviderTiles(providers$Esri.WorldStreetMap) |>
          setView(lng = home[1], lat = home[2], zoom = zoom) |>
-         osmGeocoder(email = email = osm_email) |>
+         osmGeocoder(email = osm_email) |>
          addScaleBar(position = 'bottomright') |>
          addFullscreen()
    })
