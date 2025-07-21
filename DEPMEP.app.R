@@ -32,8 +32,6 @@ howto <- includeMarkdown('inst/howto.md')                   # About this site
 aboutMEP <- includeMarkdown('inst/aboutMEP.md')             # About MEP guidance
 crossing_standards <- includeMarkdown('inst/crossing_standards.md')           # Crossing standards
 source_data <- includeMarkdown('inst/sourcedata.md')        # Links to source data
-beta <- includeMarkdown('inst/beta.md')                     # Beta test notice
-
 osm_email <- readChar(f <- 'www/osm_email.txt', file.info(f)$size)
 
 
