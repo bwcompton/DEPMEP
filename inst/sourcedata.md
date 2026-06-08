@@ -28,5 +28,5 @@ Data integration and web mapping by <a href="https://umassdsl.org/" target="_bla
 
 Crossings used for Critical Linkages and for this site were downloaded October 19, 2023; other data are current as of 8 Dec 2023.
 
-Bugs, problems, suggestions? <a href="https://umassdsl.webgis1.com/hesk/index.php?a=add&category=2" target="_blank" rel="noopener noreferrer">Let us know</a>
+Bugs, problems, suggestions? <a href="https://marsh01.ecs.umass.edu/hesk/index.php?a=add&category=2" target="_blank" rel="noopener noreferrer">Let us know</a>
 

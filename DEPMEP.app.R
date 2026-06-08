@@ -35,7 +35,7 @@ source_data <- includeMarkdown('inst/sourcedata.md')        # Links to source da
 osm_email <- readChar(f <- 'www/osm_email.txt', file.info(f)$size)
 
 
-xml <- read.XML('https://umassdsl.webgis1.com/geoserver')   # get capabilities of our GeoServer
+xml <- read.XML('https://marsh01.ecs.umass.edu/geoserver')   # get capabilities of our GeoServer
 streamlines <- layer.info(xml, 'DEPMEP:streams')            # get info for stream linework
 culverts <- layer.info(xml, 'DEPMEP:crossings')             # get info for crossing points
 
