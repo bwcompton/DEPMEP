@@ -6,7 +6,7 @@ tr:nth-child(even) {
   background-color: #F8F8F8;
   }
 
-  
+
 </style>
 
 In 2014, the Massachusetts Department of Environmental Protection (MassDEP) 
@@ -41,19 +41,21 @@ Flood for that road classification (Table 1)[^1].
 Classifications.**
 
 ---
-| Road or Highway Functional Classification | Hydraulic Design Flood |
-| :--- | :--- |
-| Interstate, or Limited Access Highways | 100-year flood |
-| Rural Principal Arterial | 50-year flood |
-| Rural Minor Arterial | 50-year flood |
-| Rural Collector, Major | 25-year flood |
-| Rural Collector, Minor | 10-year flood |
-| Rural Local Road | 10-year flood |
-| Urban Principal Arterial | 50-year flood |
-| Urban Minor Arterial Street | 25-year flood |
-| Urban Collector Street | 10-year flood |
-| Urban Local Road | 10-year flood |
-| Driveways, Sub-division roads, trails, bike paths, etc. | 10-year flood |
+
+| Road or Highway Functional Classification               | Hydraulic Design Flood |
+|:------------------------------------------------------- |:---------------------- |
+| Interstate, or Limited Access Highways                  | 100-year flood         |
+| Rural Principal Arterial                                | 50-year flood          |
+| Rural Minor Arterial                                    | 50-year flood          |
+| Rural Collector, Major                                  | 25-year flood          |
+| Rural Collector, Minor                                  | 10-year flood          |
+| Rural Local Road                                        | 10-year flood          |
+| Urban Principal Arterial                                | 50-year flood          |
+| Urban Minor Arterial Street                             | 25-year flood          |
+| Urban Collector Street                                  | 10-year flood          |
+| Urban Local Road                                        | 10-year flood          |
+| Driveways, Sub-division roads, trails, bike paths, etc. | 10-year flood          |
+
 ---
 
 ### Cost thresholds
@@ -90,26 +92,26 @@ Critical Linkages and Coldwater Critical Linkages analyses from the
 Landscape Ecology Lab at the University of Massachusetts Amherst.
 
 - **Highest Restoration Potential:** Top 5% of statewide Critical
-Linkages or top 10% of Coldwater Critical Linkages Effect scores for
-crossings on streams with a projected mean summer temperature ≤ 16C
+  Linkages or top 10% of Coldwater Critical Linkages Effect scores for
+  crossings on streams with a projected mean summer temperature ≤ 16C
 
 - **Very High Restoration Potential:** 5-10% of statewide Critical
-Linkages or top 10-20% of Coldwater Critical Linkages Effect scores
-for crossings on streams with a projected mean summer temperature ≤
-16C
+  Linkages or top 10-20% of Coldwater Critical Linkages Effect scores
+  for crossings on streams with a projected mean summer temperature ≤
+  16C
 
 - **High Restoration Potential:** 10-20% of statewide Critical
-Linkages or top 20-30% of Coldwater Critical Linkages Effect scores
-for crossings on streams with a projected mean summer temperature ≤
-16C
+  Linkages or top 20-30% of Coldwater Critical Linkages Effect scores
+  for crossings on streams with a projected mean summer temperature ≤
+  16C
 
 - **Medium Restoration Potential:** 20-25% of statewide Critical
-Linkages or top 30-40% of Coldwater Critical Linkages Effect scores
-for crossings on streams with a projected mean summer temperature ≤
-16C
+  Linkages or top 30-40% of Coldwater Critical Linkages Effect scores
+  for crossings on streams with a projected mean summer temperature ≤
+  16C
 
 - **Other:** All other crossings (below top 25% for Critical Linkages;
-below top 40% for Coldwater Critical Linkages)
+  below top 40% for Coldwater Critical Linkages)
 
 Critical Linkages scores are derived from models and field assessments
 of the passibility of road-stream crossings for aquatic organisms. Field
@@ -132,13 +134,15 @@ Table 2.
 **Table 2. Maximum Extent Practicable Cost Factors**
 
 ---
-| | Highest Quality | High Quality | General Quality |
-| :--- | :--- | :--- | :--- | 
-| Highest restoration potential&nbsp; | 50% above baseline&nbsp; | 30% above baseline&nbsp; | 25% above baseline |
-| Very high restoration potential&nbsp; | 40% above baseline&nbsp; | 25% above baseline&nbsp; | 20% above baseline |
-| High restoration potential&nbsp; | 30% above baseline&nbsp; |  20% above baseline&nbsp; | 15% above baseline | 
-| Medium restoration potential&nbsp; | 20% above baseline&nbsp; | 15% above baseline&nbsp; | 10% above baseline | 
-| Other&nbsp; | 10% above baseline&nbsp; |  10% above baseline&nbsp; | baseline |
+
+|                                       | Highest Quality             | High Quality                | General Quality       |
+|:------------------------------------- |:--------------------------- |:--------------------------- |:--------------------- |
+| Highest restoration potential&nbsp;   | 150% of baseline cost&nbsp; | 130% of baseline cost&nbsp; | 125% of baseline cost |
+| Very high restoration potential&nbsp; | 140% of baseline cost&nbsp; | 125% of baseline cost&nbsp; | 120% of baseline cost |
+| High restoration potential&nbsp;      | 130% of baseline cost&nbsp; | 120% of baseline cost&nbsp; | 115% of baseline cost |
+| Medium restoration potential&nbsp;    | 120% of baseline cost&nbsp; | 115% of baseline cost&nbsp; | 110% of baseline cost |
+| Other&nbsp;                           | 110% of baseline cost&nbsp; | 110% of baseline cost&nbsp; | 105% of baseline cost |
+
 ---
 
 When, based on this table, the cost of meeting the Crossing Standards

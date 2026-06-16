@@ -17,7 +17,7 @@
 
    z <- paste0('<h4>Culvert/bridge</h4><h5><b>MEP factor: ') |>
       paste0(factor(x$mep, levels = 1:8,
-                    labels = c('baseline', paste0(c(10, 15, 20, 25, 30, 40, 50), '% above baseline'))), '</b></h5></p>') |>
+                    labels = paste0(c(105, 110, 115, 120, 125, 130, 140, 150), '% of baseline cost')), '</b></h5></p>') |>
 
       paste0('<p>', fmt.hq(x), '</p>') |>
 
