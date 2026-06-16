@@ -36,7 +36,7 @@ osm_email <- readChar(f <- 'www/osm_email.txt', file.info(f)$size)
 
 
 geoserver <- list(
-   primary = 'https://maXXXXrsh01.ecs.umass.edu/geoserver',                         # MassMarsh marsh01 MVT server
+   primary = 'https://marsh01.ecs.umass.edu/geoserver',                         # MassMarsh marsh01 MVT server
    fallback = 'https://marsh02.ecs.umass.edu:8443/geoserver'                    # marsh02 fallback
 )
 
@@ -62,8 +62,8 @@ geoserver.using <- if(is.null(geoserver.url)) NULL else
                    if(identical(geoserver.url, geoserver$primary)) 'GeoServer 1' else 'GeoServer 2'
 
 if(!is.null(xml)) {
-   streamlines <- layer.info(xml, 'DEPMEP:streams')                             # get info for stream linework
-   culverts    <- layer.info(xml, 'DEPMEP:crossings')                           # get info for crossing points
+   streamlines <- layer.info(xml, 'DEPMEP:streams',   base.url = geoserver.url) # get info for stream linework
+   culverts    <- layer.info(xml, 'DEPMEP:crossings', base.url = geoserver.url) # get info for crossing points
 } else {
    streamlines <- NULL
    culverts    <- NULL
