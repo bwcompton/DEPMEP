@@ -36,7 +36,7 @@ osm_email <- readChar(f <- 'www/osm_email.txt', file.info(f)$size)
 
 
 geoserver <- list(
-   primary = 'https://marsh01.ecs.umass.edu/geoserver',                         # MassMarsh marsh01 MVT server
+   primary = 'https://maXXXXrsh01.ecs.umass.edu/geoserver',                         # MassMarsh marsh01 MVT server
    fallback = 'https://marsh02.ecs.umass.edu:8443/geoserver'                    # marsh02 fallback
 )
 
@@ -115,9 +115,9 @@ server <- function(input, output, session) {
                      '<a href="https://www.mass.gov/orgs/massachusetts-department-of-environmental-protection"
                   target="_blank" rel="noopener noreferrer">Mass DEP</a> | <a href="https://umassdsl.org"
                   target="_blank" rel="noopener noreferrer">UMass DSL</a>',
-                     geoserver.using), collapse = ' | ')) |>
+                     'ESRI', geoserver.using), collapse = ' | ')) |>
          addProviderTiles(providers$Esri.WorldStreetMap,
-                          options = providerTileOptions(attribution = 'ESRI')) |>
+                          options = providerTileOptions(attribution = '')) |>
          setView(lng = home[1], lat = home[2], zoom = zoom) |>
          osmGeocoder(email = osm_email) |>
          addScaleBar(position = 'bottomright') |>
