@@ -35,9 +35,37 @@ source_data <- includeMarkdown('inst/sourcedata.md')        # Links to source da
 osm_email <- readChar(f <- 'www/osm_email.txt', file.info(f)$size)
 
 
-xml <- read.XML('https://marsh01.ecs.umass.edu/geoserver')   # get capabilities of our GeoServer
-streamlines <- layer.info(xml, 'DEPMEP:streams')            # get info for stream linework
-culverts <- layer.info(xml, 'DEPMEP:crossings')             # get info for crossing points
+geoserver <- list(
+   primary = 'https://marsh01.ecs.umass.edu/geoserver',                         # MassMarsh marsh01 MVT server
+   fallback = 'https://marsh02.ecs.umass.edu:8443/geoserver'                    # marsh02 fallback
+)
+
+.gs <- tryCatch({                                                                # ----- Ping our GeoServer
+   list(url = geoserver$primary, xml = read.XML(geoserver$primary))
+},
+error = function(e) {
+   message('Primary GeoServer failed: ', conditionMessage(e))
+   tryCatch({
+      list(url = geoserver$fallback, xml = read.XML(geoserver$fallback))
+   },
+   error = function(e) {
+      message('Fallback GeoServer failed: ', conditionMessage(e))
+      NULL
+   })
+})
+
+geoserver.url <- .gs$url
+xml           <- .gs$xml
+rm(.gs)
+message('Using GeoServer: ', if(is.null(geoserver.url)) 'NONE' else geoserver.url)
+
+if(!is.null(xml)) {
+   streamlines <- layer.info(xml, 'DEPMEP:streams')                             # get info for stream linework
+   culverts    <- layer.info(xml, 'DEPMEP:crossings')                           # get info for crossing points
+} else {
+   streamlines <- NULL
+   culverts    <- NULL
+}
 
 
 # User interface ---------------------
@@ -66,6 +94,10 @@ ui <- fluidPage(
 # Server -----------------------------
 server <- function(input, output, session) {
 
+   if(is.null(geoserver.url))                                                   # ----- GeoServer unavailable
+      modalHelp('The map data server is currently unavailable. Please try again later.',
+                'Map server unavailable')
+
    observeEvent(input$howto, {
       modalHelp(howto, 'About this site')})
    observeEvent(input$aboutMEP, {
@@ -89,7 +121,7 @@ server <- function(input, output, session) {
    })
 
    observe({
-      if(isTRUE(input$map_zoom >= trigger)) {
+      if(isTRUE(input$map_zoom >= trigger) && !is.null(geoserver.url)) {
          nw <- get.tile(data.zoom, input$map_bounds$north, input$map_bounds$west)   # corners of viewport
          se <- get.tile(data.zoom, input$map_bounds$south, input$map_bounds$east)
          m <- leafletProxy('map', session)
