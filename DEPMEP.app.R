@@ -58,6 +58,8 @@ geoserver.url <- .gs$url
 xml           <- .gs$xml
 rm(.gs)
 message('Using GeoServer: ', if(is.null(geoserver.url)) 'NONE' else geoserver.url)
+geoserver.using <- if(is.null(geoserver.url)) NULL else
+                   if(identical(geoserver.url, geoserver$primary)) 'GeoServer 1' else 'GeoServer 2'
 
 if(!is.null(xml)) {
    streamlines <- layer.info(xml, 'DEPMEP:streams')                             # get info for stream linework
@@ -109,11 +111,13 @@ server <- function(input, output, session) {
 
    output$map <- renderLeaflet({
       leaflet() |>
-         addTiles(urlTemplate = '', attribution =
+         addTiles(urlTemplate = '', attribution = paste(c(
                      '<a href="https://www.mass.gov/orgs/massachusetts-department-of-environmental-protection"
                   target="_blank" rel="noopener noreferrer">Mass DEP</a> | <a href="https://umassdsl.org"
-                  target="_blank" rel="noopener noreferrer">UMass DSL</a>') |>
-         addProviderTiles(providers$Esri.WorldStreetMap) |>
+                  target="_blank" rel="noopener noreferrer">UMass DSL</a>',
+                     geoserver.using), collapse = ' | ')) |>
+         addProviderTiles(providers$Esri.WorldStreetMap,
+                          options = providerTileOptions(attribution = 'ESRI')) |>
          setView(lng = home[1], lat = home[2], zoom = zoom) |>
          osmGeocoder(email = osm_email) |>
          addScaleBar(position = 'bottomright') |>
