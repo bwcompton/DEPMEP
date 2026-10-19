@@ -74,8 +74,8 @@ if(!is.null(xml)) {
 ui <- fluidPage(
    titlePanel('MassDEP culvert and bridge upgrade assessment tool'),
    tags$head(tags$script(src = 'matomo.js')),               # add Matomo tracking JS
-   tags$head(tags$script(src = 'matomo_heartbeat.js')),     # turn on heartbeat timer
-   tags$script(src = 'matomo_events.js'),                   # track popups and help text
+   tags$head(tags$script(src = 'matomo_heartbeat.js?v=2')), # turn on heartbeat timer
+   tags$script(src = 'matomo_events.js?v=2'),               # track popups and help text
 
    fluidRow(
       column(2,

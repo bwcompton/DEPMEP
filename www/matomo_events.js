@@ -1,3 +1,4 @@
+var _paq = window._paq = window._paq || [];  // in case matomo.js was blocked (e.g., by an ad blocker)
 $(document).on('shiny:inputchanged', function(event) {
     if (event.name === 'howto' ||
         event.name === 'aboutMEP' ||
