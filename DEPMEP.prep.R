@@ -4,15 +4,15 @@
    # DEPMEP.prep: Prepare streams data for DEPMEP
    # *** Run this on my laptop (takes 10 min for streams, 1 min for crossings) ***
    # We can't run modern R code on the cluster, so the files have to be copied locally first,
-   # from  x:/Projects/DEP_Prep/Final/ to d:/GIS/DEPMEP/source/. Attend to ever-changing file names.
-   # Source: (d:/GIS/DEPMEP/source/)
+   # from  x:/Projects/DEP_Prep/Final/ to c:/GIS/GIS/DEPMEP/source/. Attend to ever-changing file names.
+   # Source: (c:/GIS/GIS/DEPMEP/source/)
    #     massachusetts.shp       state outline
    # Arguments:
    #     streamsfile             Ethan's streams with attributes, dissolved (see note)
    #     crossingsfile           Ethan's road-stream crossings, with attributes
    #     streams                 if TRUE, process streams
    #     crossings               if TRUE, process crossings
-   # Results: (d:/GIS/DEPMEP/results/)
+   # Results: (c:/GIS/GIS/DEPMEP/results/)
    #     streams.shp
    #     crossings.shp
    #
@@ -27,6 +27,7 @@
    #
    # B. Compton, 24 and 30-31 Aug 2023
    # 3 Oct 2023: add streams and crossings options
+   # 20 Nov 2026: update to new directories on my laptop
 
 
 
@@ -36,9 +37,9 @@
    if(streams) {
       # ----- 1. Clip to state boundaries
 
-      mass <- st_read('d:/GIS/DEPMEP/source/massachusetts.shp')
+      mass <- st_read('c:/GIS/GIS/DEPMEP/source/massachusetts.shp')
       mass2 <- st_buffer(mass, -100)
-      streams <- st_read(paste0('d:/GIS/DEPMEP/source/', streamsfile))
+      streams <- st_read(paste0('c:/GIS/GIS/DEPMEP/source/', streamsfile))
       streams <- st_intersection(streams, mass2)
       streams[c('n_hq', 'MASS', 'COUNT', 'AREA', 'PERIMETER', 'HECTARES', 'STATE_NAME')] <- list(NULL)  # drop columns from mass and n_hq
 
@@ -54,29 +55,30 @@
 
 
       streams <- st_simplify(streams, dTolerance = 1)
-      st_write(streams, 'd:/GIS/DEPMEP/working/streams.shp', delete_layer = TRUE)
+      st_write(streams, 'c:/GIS/GIS/DEPMEP/working/streams.shp', delete_layer = TRUE)
 
 
       # ----- 3. Reproject streams to web Mercator
 
-      reproject_vectors('d:/GIS/DEPMEP/working/streams.shp', 'd:/GIS/DEPMEP/results/streams.shp', mvt = TRUE)
+      reproject_vectors('c:/GIS/GIS/DEPMEP/working/streams.shp', 'c:/GIS/GIS/DEPMEP/results/streams.shp', mvt = TRUE)
    }
 
    if(crossings) {
 
       # ----- 4. Clean up columns in crossings
 
-      culverts <- st_read(paste0('d:/GIS/DEPMEP/source/', crossingsfile))
+      culverts <- st_read(paste0('c:/GIS/GIS/DEPMEP/source/', crossingsfile))
       culverts[c('id', 'aquatic', 'cl_effect', 'cw_effect', 'n_hq')] <- list(NULL)    # drop columns we don't want
-      st_write(culverts, 'd:/GIS/DEPMEP/working/crossings.shp', delete_layer = TRUE)
+      culverts$survey_id[is.na(culverts$survey_id)] <- 0     # MVT drops NULL attributes, so all-NA tiles would lose this column and break rbind
+      st_write(culverts, 'c:/GIS/GIS/DEPMEP/working/crossings.shp', delete_layer = TRUE)
 
 
       # ----- 5. Reproject crossings to web Mercator
 
-      reproject_vectors('d:/GIS/DEPMEP/working/crossings.shp', 'd:/GIS/DEPMEP/results/crossings.shp', mvt = TRUE)
+      reproject_vectors('c:/GIS/GIS/DEPMEP/working/crossings.shp', 'c:/GIS/GIS/DEPMEP/results/crossings.shp', mvt = TRUE)
    }
 
-   cat(ifelse(streams, 'd:\\GIS\\DEPMEP\\results\\streams.shp', ''), ifelse(streams & crossings, ', and ', ''),
-       ifelse(crossings, 'd:\\GIS\\DEPMEP\\results\\crossings.shp', ''),
+   cat(ifelse(streams, 'c:/GIS//GIS/DEPMEP/results/streams.shp', ''), ifelse(streams & crossings, ', and ', ''),
+       ifelse(crossings, 'c:/GIS//GIS/DEPMEP/results/crossings.shp', ''),
        ifelse(streams & crossings, ' are', ' is'), ' ready to be posted on the GeoServer.\n', sep = '')
 }

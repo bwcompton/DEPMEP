@@ -155,7 +155,7 @@ barrier effects of road-stream crossings, even when full compliance with
 the Crossing Standards is not practicable.
 
 <br>
-<a href="https://umassdsl.org/404" target="_blank" rel="noopener noreferrer">Full MEP guidance document</a> <span style="color: red">(not yet available)</span>
+<a href="https://www.mass.gov/doc/meeting-the-ma-stream-crossing-standards-to-the-max-extent-practicable-2026/download" target="_blank" rel="noopener noreferrer">Full MEP guidance document</a> (October 20, 2026)
 
 ---
 
