@@ -103,7 +103,7 @@ server <- function(input, output, session) {
    observeEvent(input$howto, {
       modalHelp(howto, 'About this site')})
    observeEvent(input$aboutMEP, {
-      modalHelp(aboutMEP, title = 'About MEP guidance')})
+      modalHelp(aboutMEP, title = 'About the MEP guidance')})
    observeEvent(input$crossing_standards, {
       modalHelp(crossing_standards, title = 'Massachusetts River and Stream Crossing Standards')})
    observeEvent(input$sourcedata, {

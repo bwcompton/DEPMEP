@@ -5,8 +5,6 @@ tr:nth-child(odd) {
 tr:nth-child(even) {
   background-color: #F8F8F8;
   }
-
-
 </style>
 
 In 2014, the Massachusetts Department of Environmental Protection (MassDEP) 
@@ -33,14 +31,12 @@ and ecological benefits.
 Maximum Extent Practicable based on cost is determined by comparing the
 cost to fully meet the Crossing Standards against the baseline cost.
 Baseline cost is not determined by replacement-in-kind but by the cost
-of a crossing design that accommodates the MassDOT Hydraulic Design
-Flood for that road classification (Table 1)[^1].
+of a crossing design that accommodates the Hydraulic Design
+Flood for that road classification (Table 1).
 
 <br>
-**Table 1. MassDOT Design Floods for Various Road and Highway Functional
-Classifications.**
 
----
+**Table 1. Design Floods for Various Road and Highway Functional Classifications.**
 
 | Road or Highway Functional Classification               | Hydraulic Design Flood |
 |:------------------------------------------------------- |:---------------------- |
@@ -53,8 +49,11 @@ Classifications.**
 | Urban Principal Arterial                                | 50-year flood          |
 | Urban Minor Arterial Street                             | 25-year flood          |
 | Urban Collector Street                                  | 10-year flood          |
-| Urban Local Road                                        | 10-year flood          |
-| Driveways, Sub-division roads, trails, bike paths, etc. | 10-year flood          |
+| Urban Local Street                                      | 10-year flood          |
+| Bike Trail/Shared Use Path                              | 10-year flood          |
+| Driveways with stream watersheds > 0.5 square miles&nbsp;&nbsp;&nbsp; | 10-year flood          |
+| Driveways with stream watersheds ≤ 0.5 square miles     | 5-year flood           |
+| Railroad Crossings                                      | Functional equivalent of <br>the road classification. <br>At a minimum the 10-year <br>flood |
 
 ---
 
@@ -68,7 +67,7 @@ meeting the Crossing Standards (connectivity restoration potential).
 ### Habitat quality
 
 For habitat quality, stream segments, and the crossings on those
-segments, classified into three classes (highest quality, high quality,
+segments, are classified into three classes (highest quality, high quality,
 general quality) based on whether they fall into one or more of the
 following categories.
 
@@ -89,7 +88,7 @@ according to the following.
 
 To assess connectivity restoration potential, we use the most current
 Critical Linkages and Coldwater Critical Linkages analyses from the
-Landscape Ecology Lab at the University of Massachusetts Amherst.
+Landscape Ecology Lab at the University of Massachusetts Amherst (November 2026).
 
 - **Highest Restoration Potential:** Top 5% of statewide Critical
   Linkages or top 10% of Coldwater Critical Linkages Effect scores for
@@ -131,13 +130,12 @@ quality and connectivity restoration potential, are presented in
 Table 2.
 
 <br>
-**Table 2. Maximum Extent Practicable Cost Factors**
 
----
+**Table 2. Maximum Extent Practicable Cost Factors**
 
 |                                       | Highest Quality             | High Quality                | General Quality       |
 |:------------------------------------- |:--------------------------- |:--------------------------- |:--------------------- |
-| Highest restoration potential&nbsp;   | 150% of baseline cost&nbsp; | 130% of baseline cost&nbsp; | 125% of baseline cost |
+| Highest restoration potential&nbsp;   | 150% of baseline cost&nbsp; | 130% of baseline cost&nbsp; | 125% of baseline cost&nbsp; |
 | Very high restoration potential&nbsp; | 140% of baseline cost&nbsp; | 125% of baseline cost&nbsp; | 120% of baseline cost |
 | High restoration potential&nbsp;      | 130% of baseline cost&nbsp; | 120% of baseline cost&nbsp; | 115% of baseline cost |
 | Medium restoration potential&nbsp;    | 120% of baseline cost&nbsp; | 115% of baseline cost&nbsp; | 110% of baseline cost |
@@ -156,8 +154,3 @@ the Crossing Standards is not practicable.
 
 <br>
 <a href="https://www.mass.gov/doc/meeting-the-ma-stream-crossing-standards-to-the-max-extent-practicable-2026/download" target="_blank" rel="noopener noreferrer">Full MEP guidance document</a> (October 20, 2026)
-
----
-
-[^1]: To the MassDOT road classification, we have added a category for
- driveways, subdivision roads, trails, bike paths, etc.

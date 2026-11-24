@@ -7,7 +7,7 @@
 
 <!-- badges: end -->
 
-Version 1.1.0. Initial public release 20 Nov 2026.
+Version 1.1.1. Initial public release 20 Nov 2026.
 
 DEPMEP is a Shiny app to support the Massachusetts Department of
 Environmental Protection’s “Maximum Extent Practicable” guidelines for
